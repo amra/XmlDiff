@@ -11,16 +11,25 @@ ________________________________________________________________________________
 What does XmlDiff do:
 
 Output: xmlDiff.xml
-Input:  old.xml new.xml [mandatoryTags.xml] 
+Input:  old.xml new.xml mandatoryTags.xml 
 
-- xmlDiff.xml contains the difference between the first two input xml files, while keeping the mandatory tags specified in the third input xml file. The mandatory xml file is optional.
-- the input xml files must contain at least one empty tag(the root tag) to pass the org.w3c.dom validations. Also attributes must have unique names within the same tag etc. on short they must be valid xml files.
+- mandatoryTags.xml is optional, and specifies the tags that are mandatory and therefor should be kept in the output xml file even if not changed.
+- xmlDiff.xml contains the difference between the first two input xml files and the mandatory tags specified in the third input xml file (eg: mandatoryTags.xml) if given. 
+- the xml files must contain at least one empty tag(the root tag) to pass the org.w3c.dom validations used by XmlDiff. Also attributes must have unique names within the same tag etc. on short they must be valid xml files.
 
 ________________________________________________________________________________
 How to run XmlDiff:
 
+- Give your user execution right over the jar file
 chmod u+x xmlDiff.jar
-java -jar xmlDiff.jar old.xml new.xml [mandatoryTags.xml]
+
+- Run the jar in release or debug mode (mandatoryTags.xml is optional):
+Release mode:
+java -jar xmlDiff.jar old.xml new.xml mandatoryTags.xml
+
+Debug mode:
+java -DxmlDiff.isDebugBuild=true -jar xmlDiff.jar old.xml new.xml mandatoryTags.xml
+
 
 ________________________________________________________________________________
 XmlDiff's algorithm:
@@ -40,7 +49,7 @@ ________________________________________________________________________________
 How to interpret the results of XmlDiff's output file xmlDiff.xml:
 
 Changes are marked with the following values:
-- S = same/no change (only in the "debug" version)
+- S = same/no change (only in debug mode)
 - C = changed 
 - N = new/added 
 - D = deleted 
