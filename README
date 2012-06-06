@@ -1,0 +1,153 @@
+Content:
+
+- What does XmlDiff do
+- How to run XmlDiff
+- XmlDiff's algorithm
+- How to interpret the results XmlDiff's output file xmlDiff.xml
+- xmlDiff.xml example
+- mandatoryTags.xml example
+
+________________________________________________________________________________
+What does XmlDiff do:
+
+Output: xmlDiff.xml
+Input:  old.xml new.xml [mandatoryTags.xml] 
+
+- xmlDiff.xml contains the difference between the first two input xml files, while keeping the mandatory tags specified in the third input xml file. The mandatory xml file is optional.
+- the input xml files must contain at least one empty tag(the root tag) to pass the org.w3c.dom validations. Also attributes must have unique names within the same tag etc. on short they must be valid xml files.
+
+________________________________________________________________________________
+How to run XmlDiff:
+
+chmod u+x xmlDiff.jar
+java -jar xmlDiff.jar old.xml new.xml [mandatoryTags.xml]
+
+________________________________________________________________________________
+XmlDiff's algorithm:
+
+Compare each tag and its attributes from the first xml file with each tag with the same name, and its attributes, from the second xml file (exception: the first/root tags, the contents of which are compared even if their names have changed).
+
+In this comparison is build the list with the matched tags(mandatory, changed and not changed) in a descending order of their content's matching percentage. 
+The descending order is used to ensure that the highest matching percentages are matched/chosen first. Then half matches are marked as new or deleted, and the remaining tags will be deleted.
+
+A tag is kept in the output xml file only if:
+- it or its child tags got changed, and will contain only the changes and their parents
+- it is mandatory, in which case all its child tags will be kept even if they did not changed nor are mandatory
+- it contains mandatory child tags, in which case only its mandatory child tags and their parents will be kept even if no other change was done
+- is new/deleted, in which case all its child tags are kept as well, but nothing is marked as mandatory even if they are, as anyway its whole content will be put in xmlDiff.xml
+
+________________________________________________________________________________
+How to interpret the results of XmlDiff's output file xmlDiff.xml:
+
+Changes are marked with the following values:
+- S = same/no change (only in the "debug" version)
+- C = changed 
+- N = new/added 
+- D = deleted 
+
+Other marks used in xmlDiff.xml for specifying why the tag was kept in the output file:
+- mod = says the type of MODification received by the tag or its content
+- mod_attrName = says how the attribute called "attrName" got changed
+- mand = says if the current tag(NOT its kids) is MANDatory
+- mod_val = says if the value of a tag got replaced or replaces the previous child tags of its tag. When it doesn't replaces nor is replaced by other tags, it's change is reflected in the "mod" mark described above. Valid values are D(deleted) and N(new).
+
+________________________________________________________________________________
+xmlDiff.xml example:
+
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<book2 mod="C" myBook="yess" mod_myBook="C">
+
+    <person mod="C" h="5" mod_h="C">
+        <first mod="C" mand="y" ghhh="hey" mod_ghhh="D" hi="6" mod_hi="D" id="789" mod_id="D"> Bill </first> 
+        <last mod="C"> Paii </last> 
+        <first mod="N" mand="y"> William </first> 
+    </person> 
+
+    <animal mod="D" hi="4">
+        <first j="fg"> Fifiaaaaa </first> 
+    </animal> 
+
+    <person mod="C">
+        <first mand="y"> Bill </first> 
+        <last mod="D"> Gates </last> 
+        <age mod="C" h="6" mod_h="N"> 22 </age> 
+    </person> 
+
+    <animal mod="D">
+        <name> Haha </name> 
+    </animal> 
+
+    <person mod="C"> Heidi (mod_val="N") 
+        <first mod="D" mand="y"> Steve </first> 
+        <last mod="D"> Jobs </last> 
+        <age mod="D"> 40 </age> 
+    </person> 
+
+    <person mod="C"> Elena (mod_val="D") 
+        <first mod="N" mand="y"> Elena </first> 
+        <last mod="N"> Florea </last> 
+    </person> 
+
+    <person mod="C">
+        <first mand="y"> Alina </first> 
+        <first mod="N" mand="y"> Ioana </first> 
+        <age mod="N"> 28 </age> 
+        <kid mod="C">
+            <name mod="C" o="89" mod_o="D" u="hihi" mod_u="D"> Alin </name> 
+            <expertise mod="N"> robotics </expertise> 
+            <age mod="D"> 2 </age> 
+        </kid> 
+    </person> 
+
+    <person mod="D">  </person> 
+
+    <animals mod="N" h="5">
+        <animal h="4">
+            <name> Fifi </name> 
+        </animal> 
+        <animal>
+            <name> Fifi2 </name> 
+        </animal> 
+    </animals> 
+
+    <animals mod="N">
+        <animal>
+            <name> Fifi2 </name> 
+        </animal> 
+    </animals> 
+
+    <animals mod="N"></animals> 
+
+    <lina mod="C">  </lina> 
+
+</book2> 
+
+________________________________________________________________________________
+mandatoryTags.xml examples:
+
+- Example 1:
+Here there is only one mandatory tag named "first".
+The root tag is ignored so it can be named anything you wish.
+
+<mandatoryTags>
+
+    <first>
+    </first>
+
+</mandatoryTags>
+
+- Example 2:
+Here there are no mandatory tags only the root tag which is ignored. 
+At least a root tag must be specified for org.w3c.dom to be able to parse a valid xml file.
+If there are no mandatory tags then just don't pass a third argument to xmlDiff.jar, as mandatoryTags.xml is an optional argument!
+
+<mandatoryTags>
+</mandatoryTags>
+
+OR
+
+<?xml version="1.0" encoding="UTF-8"?>
+<book2>          
+</book2>
+

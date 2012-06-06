@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book myBook="yess">  dsfsd
+    <version id="30" nonid="24">
+        <nr> 1 </nr>
+    </version>
+      
+    <animals h="5">               
+        <animal h="4">
+            <name>Fifi</name>
+        </animal> 
+        <animal>
+            <name>Fifi2</name>
+        </animal>           
+    </animals>
+    
+    <person h="5">                
+        <first h="4">Bill</first>
+        <last>Paii</last>
+        <age>22</age>
+        <first>William</first>  
+    </person>
+    
+    <person>                    
+        <first>Bill</first>     
+        <age h="6">22</age>
+    </person>    
+    
+    <person>  Heidi </person>
+    
+    <animals>                
+        <animal>
+            <name>Fifi2</name>
+        </animal> 
+    </animals> 
+    
+    <person>                 
+      <first>Elena</first> 
+      <last>Florea</last>
+    </person>
+           
+    <person>                 
+        <first>Alina</first> 
+        <first>Ioana</first> 
+        <last>Florea</last>   
+        <age>28</age>          
+        <kid>                  
+            <name>Alin</name>  
+            <expertise>robotics</expertise>     
+        </kid>
+    </person>
+    
+    <animals></animals> 
+    
+    <lina> </lina>          
+</book>

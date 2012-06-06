@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<book2 mod="C" myBook="yess" mod_myBook="C">
+    <person mod="C">
+        <first mand="y">Alina</first> 
+        <kid mod="C">
+            <name mod="C" o="89" mod_o="D" u="hihi" mod_u="D">Alin</name> 
+            <expertise mod="N">robotics</expertise> 
+            <age mod="D">2</age> 
+        </kid> 
+    </person> 
+
+    <person mod="C">
+        <first mand="y">Bill</first> 
+        <age mod="C" h="6" mod_h="N">22</age> 
+    </person> 
+
+    <person mod="C">
+        <first mod="C" mand="y">Elena</first> 
+        <last mod="C">Florea</last> 
+    </person> 
+
+    <animal mod="D" hi="4">
+        <first j="fg">Fifiaaaaa</first> 
+    </animal> 
+
+    <animal mod="D">
+        <name>Haha</name> 
+    </animal> 
+
+    <person mod="C">Heidi</person> 
+
+    <person mod="C" h="5" mod_h="C">
+        <first mod="C" mand="y" ghhh="hey" mod_ghhh="D" hi="6" mod_hi="D" id="789" mod_id="D">Bill</first> 
+        <first mod="N">William</first> 
+        <last mod="C">Paii</last> 
+    </person> 
+
+    <person mod="D"></person> 
+
+    <animals mod="N" h="5">
+        <animal h="4">
+            <name>Fifi</name> 
+        </animal> 
+        <animal>
+            <name>Fifi2</name> 
+        </animal> 
+    </animals> 
+
+    <animals mod="N">
+        <animal>
+            <name>Fifi2</name> 
+        </animal> 
+    </animals> 
+
+    <animals mod="N"></animals> 
+
+    <lina mod="C"></lina> 
+
+</book2> 

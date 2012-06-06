@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book2 myBook="yes">
+    <version id="30" nonid="24">
+        <nr> 1 </nr>
+    </version>
+    
+    <person h="4">              
+      <first ghhh="hey" h="4" hi="6" id="789">Kiran</first> 
+      <last>Pai</last>     
+      <age>22</age>        
+    </person>
+    
+    <animal hi="4">
+        <first j="fg">Fifiaaaaa</first>       <!-- deleted stuff are not marked as mandatory even if mandatory, as they don't matter anymore -->
+    </animal> 
+         
+    <person>                
+      <first>Bill</first>   
+      <last>Gates</last>    
+      <age>46</age>         
+    </person>
+    
+    <animal>                 
+        <name>Haha</name>
+    </animal>
+    
+    <person>                 
+      <first>Steve</first>
+      <last>Jobs</last>
+      <age>40</age>
+    </person>
+    
+    <person>                 
+      Elena
+    </person>
+    
+    <person>               
+      <first>Alina</first> 
+      <last>Florea</last>  
+      <kid>                
+        <name u="hihi" o="89">Alin</name>  
+        <age>2</age> 
+      </kid>
+    </person> 
+    
+    <person> </person>  
+    
+    <lina> 1 </lina>
+</book2>
