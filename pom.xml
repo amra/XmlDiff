@@ -3,6 +3,8 @@
   <groupId>com.github.alinaioanaflorea</groupId>
   <artifactId>xmlDiff</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>xmlDiff</name>
 
   <build>
       <plugins>
