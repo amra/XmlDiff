@@ -1,6 +1,6 @@
 #! /bin/bash
 #
-# To run this script you may need to do: chmod u+x /pathTo/run.sh
+# To run this script you may need to do: chmod u+x /pathTo/runXmlDiff.sh
 ################################################################################
 
 cd "`dirname "$0"`" 
